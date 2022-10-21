@@ -1,0 +1,10 @@
+{
+    "dx": 10,
+    "dy": 10,
+    "dz": 10,
+
+    "batch_size": 32,
+    "validation_split":0.2,
+    "classes": ["circle","square","none","unknown"],
+    "num_epochs": 20
+}
