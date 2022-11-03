@@ -1,3 +1,6 @@
+# OUTDATED DO NOT USE
+
+
 # This script takes any image in "Sheets" dir and turns it into training data in "Training Data"
 # This is unfortunately a manual process, thus I no longer use it, I'm lazy and will automate this
 
