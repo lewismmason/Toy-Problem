@@ -3,6 +3,9 @@ import json
 import numpy as np
 import os
 from PIL import Image
+import matplotlib. pyplot as plt
+from skimage import io
+
 
 # This is used for training over a full sheet of a singular shape
 def data_label_pair(data_dir):
@@ -86,3 +89,19 @@ def data_coord_pair(jpg_path):
 
     print('Total of ' + str(num_imgs) + ' sub images were generated')
     return voxels, coords
+
+def plot_2D_image_pdf(jpg_path):
+    img = io.imread(jpg_path)
+    img = np.asarray(img, dtype=np.uint16)
+    num_slice = img.shape[0]    # First dimension is slice, second is height, third width
+
+    # 2. Get PDF of TIF file
+    counts, bins = np.histogram(img[:,:], bins=2**8)
+    counts[0] = 0   # Remove the pure black from the histogram
+    plt.figure()
+
+    # plt.imshow(img[1,:,:], cmap = 'gray')
+    # plt.plot(bin_edges[0:-1], histogram)
+    plt.hist(bins[:-1],bins, weights=counts)
+    plt.show()
+

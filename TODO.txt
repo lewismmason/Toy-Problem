@@ -1,18 +1,19 @@
 This document contains the thigns I need to do going forward with the project.
 
  Mock data:
-
-1. Make simulated data greyscale 16bit
 1b. Make label sheet as well (saves no noise version as the ground truth label)
 2. Add a form of noise to the data (salt and pepper, AWGN)
 3. Make the intensity of the "labelled" shapes have a similar gaussian to that of the real data
 4. Make the noise of the entire image have a similar PDF to that of the real data, done by adding pixels at specific intensities randomly until its about the same
 5. Now, we should have training data and labels that is somewhat representative of the real data, In fact perhaps we can train the real network off of this? 
 
-
-Both squares and circles will be able to be labelled and unlabelled, the difference between these being local intensities.
-
 Network:
-
 1. Get Toumas's network working on my data -> problem my images are 2d his are tif
 2. 
+
+General fixes:
+* use skimage only not PIL (skimage better with TIFs)
+
+Questions:
+* Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis
+
