@@ -1,6 +1,9 @@
 This document contains the thigns I need to do going forward with the project.
 
- Mock data:
+Mock data:
+* Save image with ground truth (binerize the greyscale version)
+* Make circles have either pdf of unlabelled fibers or of labelled fibers
+
 1b. Make label sheet as well (saves no noise version as the ground truth label)
 2. Add a form of noise to the data (salt and pepper, AWGN)
 3. Make the intensity of the "labelled" shapes have a similar gaussian to that of the real data
@@ -12,7 +15,10 @@ Network:
 2. 
 
 General fixes:
+* cleanup lol
 * use skimage only not PIL (skimage better with TIFs)
+
+
 
 Questions:
 * Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis
