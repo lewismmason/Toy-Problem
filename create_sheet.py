@@ -25,7 +25,8 @@ def main():
 
         # Create all objects and place them on the image
         for i in range(0, n_obj):
-            colour = (int(col[i,0]), int(col[i,0]), int(col[i,0]))
+            # colour = (int(col[i,0]), int(col[i,0]), int(col[i,0]))
+            colour = (int(col[i,0]))
 
             if n_shapes[i] == 'circle':
                 blank_image = cv2.circle(blank_image, (x[i],y[i]), size[i]//2, colour, -1)
@@ -37,10 +38,13 @@ def main():
 
         gt_image = np.where(blank_image>1,2**8, 0)  # ground truth is just binarized
 
+        blank_image = skimage.util.random_noise(blank_image/255.0, 'gaussian')
+        blank_image = blank_image*255
+        blank_image = blank_image.astype(int)
+
         # Nasty way of making unique file names yuck, need to comment out one of these pairs 
         dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Train Sheets/'
         gt_dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Train Sheets Ground Truth/'
-
         # dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Test Sheets/'
         # gt_dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Test Sheets Ground Truth/'
 
@@ -61,7 +65,9 @@ def main():
 
         cv2.imwrite(img_name, blank_image)
         cv2.imwrite(gt_img_name, gt_image)
+
         plot_2D_image_pdf(img_name)             # Plot the PDF for fun
+
 
 
 if __name__ == '__main__':
@@ -70,5 +76,6 @@ if __name__ == '__main__':
     import random as rand
     import os
     from helper_functions import plot_2D_image_pdf
+    import skimage
     main()
 

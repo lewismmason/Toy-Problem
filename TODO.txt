@@ -1,14 +1,21 @@
 This document contains the thigns I need to do going forward with the project.
 
 Mock data:
-* Save image with ground truth (binerize the greyscale version)
-* Make circles have either pdf of unlabelled fibers or of labelled fibers
 
-1b. Make label sheet as well (saves no noise version as the ground truth label)
-2. Add a form of noise to the data (salt and pepper, AWGN)
+* Change classes to be phase_i, and void
+* Make circles have either pdf of unlabelled fibers or of labelled fibers
+2. Add a form of noise to the data (AWGN)
 3. Make the intensity of the "labelled" shapes have a similar gaussian to that of the real data
 4. Make the noise of the entire image have a similar PDF to that of the real data, done by adding pixels at specific intensities randomly until its about the same
 5. Now, we should have training data and labels that is somewhat representative of the real data, In fact perhaps we can train the real network off of this? 
+Today^
+Goals for today are to get the the synthetic data completed. 
+Make function for creating a phase over a set of pixels whose indices and array are and input
+* Phases will be hardcoded for their general structure etc
+For accurate synthetic data, take images of some fibers and run through binerization process (susan?) then keep these as the base models that are stretched etc and put onto an image
+synthetic data must be 2 dimensional
+
+
 
 Network:
 1. Get Toumas's network working on my data -> problem my images are 2d his are tif
@@ -20,8 +27,9 @@ General fixes:
 
 
 
+
 Questions:
-* Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis
+* Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis (I believe 3d 3d)
 
 NOTE: 
 * Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning
