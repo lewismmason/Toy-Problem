@@ -96,7 +96,7 @@ def plot_2D_image_pdf(jpg_path):
     num_slice = img.shape[0]    # First dimension is slice, second is height, third width
 
     # 2. Get PDF of TIF file
-    counts, bins = np.histogram(img[:,:], bins=2**8)
+    counts, bins = np.histogram(img[:,:], bins=2**8)    # Only supports 8 bit for now, 16 bit is way too slow
     counts[0] = 0   # Remove the pure black from the histogram
     plt.figure()
 

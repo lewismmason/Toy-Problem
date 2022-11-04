@@ -10,7 +10,7 @@ import time
 
 # The sheet to evaluate
 sheet_name = 'circlesquare200_0.jpg'
-model_name = 'modelv3'
+model_name = 'modelv3'  # This is the CNN model
 
 # Load JSON params
 with open('params.json', 'r') as jf:
@@ -22,7 +22,7 @@ class_names = params['classes']
 model = tf.keras.models.load_model(model_name)
 model.summary()
 
-jpg_path = 'C:/School/Masters/Project/Code/Toy-Problem/Run Sheets/' + sheet_name
+jpg_path = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Test Sheets/' + sheet_name
 
 voxels, coords = helper_functions.data_coord_pair(jpg_path)
 num = len(coords)

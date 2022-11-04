@@ -22,7 +22,8 @@ class_names = params['classes']
 num_epochs = params['num_epochs']
 
 # Generate dataset and label pair
-data_dir = 'C:/School/Masters/Project/Code/Test Network/Train Sheets'
+data_dir = 'C:/School/Masters/Project/Code/Test Network/Sheets/Train Sheets'
+data_gt_dir = 'C:/School/Masters/Project/Code/Test Network/Sheets/Train Sheets Ground Truth'
 voxels, labels  = helper_functions.data_label_pair(data_dir)
 num = len(labels)
 voxels = np.asarray(voxels)
@@ -30,7 +31,7 @@ labels = np.asarray(labels)
 
 # for i in range(0, len):
 #   img = Image.fromarray(voxels[i])
-#   img.show()
+#   img.show()1
 
 AUTOTUNE = tf.data.AUTOTUNE
 

@@ -23,3 +23,5 @@ General fixes:
 Questions:
 * Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis
 
+NOTE: 
+* Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning

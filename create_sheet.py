@@ -17,8 +17,7 @@ def main():
         # Generate random origins, rotations, colours, and sizes
         x       = np.random.randint(0, width, size = n_obj)
         y       = np.random.randint(0, height, size = n_obj)
-        angle   = np.random.randint(0, 360, size = n_obj) # not supported, sad
-        col  =  np.random.randint(0, 255, size = (n_obj, 3))
+        col  =  np.random.randint(1, 2**8, size = (n_obj, 1))   # lower bound 1 to remove bg colour
         size    = np.random.randint(min_size, max_size, size = n_obj)
         n_shapes = np.random.choice(shapes, n_obj)
 
@@ -26,7 +25,7 @@ def main():
 
         # Create all objects and place them on the image
         for i in range(0, n_obj):
-            colour = (int(col[i,0]), int(col[i,1]), int(col[i,2]))
+            colour = (int(col[i,0]), int(col[i,0]), int(col[i,0]))
 
             if n_shapes[i] == 'circle':
                 blank_image = cv2.circle(blank_image, (x[i],y[i]), size[i]//2, colour, -1)
@@ -36,21 +35,32 @@ def main():
                 end = (int(x[i]+size[i]/2), int(y[i]+size[i]/2))
                 blank_image = cv2.rectangle(blank_image, start, end, colour, -1)
 
-        # Nasty way of making unique file names yuck
-        j = 0
-        dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Train Sheets/'
+        gt_image = np.where(blank_image>1,2**8, 0)  # ground truth is just binarized
 
+        # Nasty way of making unique file names yuck, need to comment out one of these pairs 
+        dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Train Sheets/'
+        gt_dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Train Sheets Ground Truth/'
+
+        # dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Test Sheets/'
+        # gt_dir_name = 'C:/School/Masters/Project/Code/Toy-Problem/Sheets/Test Sheets Ground Truth/'
+
+        j = 0
         img_name = dir_name + \
             ''.join(shapes) + str(n_obj) + '_' + str(j)+ '.jpg'
-
-        print(img_name)
+        gt_img_name = gt_dir_name + \
+            ''.join(shapes) + str(n_obj) + '_' + str(j)+ '.jpg'
 
         while os.path.exists(img_name):
             j = j + 1
             img_name = dir_name + \
             ''.join(shapes) + str(n_obj) + '_' + str(j)+ '.jpg'
+            gt_img_name = gt_dir_name + \
+            ''.join(shapes) + str(n_obj) + '_' + str(j)+ '.jpg' # This will overwrite other images which is ok, since it must match the above
             
+        print(img_name)
+
         cv2.imwrite(img_name, blank_image)
+        cv2.imwrite(gt_img_name, gt_image)
         plot_2D_image_pdf(img_name)             # Plot the PDF for fun
 
 
