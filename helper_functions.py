@@ -29,7 +29,7 @@ def data_label_pair(data_dir):
             jpg_path = os.path.join(dir, jpg)
             img = np.asarray(Image.open(jpg_path))
 
-            # Now iterate through every dx by dy by dz voxel and classify them
+            # Now iterate through every dx by dy by dz subset and classify them
             ny = img.shape[0]//dy
             nx = img.shape[1]//dx
             num_imgs = num_imgs + ny*nx

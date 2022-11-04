@@ -1,32 +1,24 @@
 This document contains the thigns I need to do going forward with the project.
 
+What am I doing, why not just susan filter and binerize and train on that for 2D images
+we have all the training data already. there is no point. The tool is not the research.
+
+
 Mock data:
 
-* Change classes to be phase_i, and void
-* Make circles have either pdf of unlabelled fibers or of labelled fibers
-2. Add a form of noise to the data (AWGN)
-3. Make the intensity of the "labelled" shapes have a similar gaussian to that of the real data
-4. Make the noise of the entire image have a similar PDF to that of the real data, done by adding pixels at specific intensities randomly until its about the same
-5. Now, we should have training data and labels that is somewhat representative of the real data, In fact perhaps we can train the real network off of this? 
-Today^
-Goals for today are to get the the synthetic data completed. 
-Make function for creating a phase over a set of pixels whose indices and array are and input
-* Phases will be hardcoded for their general structure etc
-For accurate synthetic data, take images of some fibers and run through binerization process (susan?) then keep these as the base models that are stretched etc and put onto an image
-synthetic data must be 2 dimensional
+Synthetic data: Work in 16 bit
+**Function that you input indices and it creates phase_i on those. Required for both void and fibers (must also check for N inner boundary values)
+**Create phase class that determines how sets of indices are coloured. This class holds edge structure, as well as greyscale gaussian 
+*Function that takes input image of binarized fiber and turns it into indices (for ^), 
 
-
+*Image maker class: this we feed in different phases, and has the functionality for creating the actual images etc
 
 Network:
-1. Get Toumas's network working on my data -> problem my images are 2d his are tif
-2. 
+1. Get 2D network up and running for the synthetic data
 
 General fixes:
 * cleanup lol
 * use skimage only not PIL (skimage better with TIFs)
-
-
-
 
 Questions:
 * Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis (I believe 3d 3d)
