@@ -1,20 +1,11 @@
-This document contains the thigns I need to do going forward with the project.
+This document contains the things I need to do going forward with the project.
 
-What am I doing, why not just susan filter and binerize and train on that for 2D images
-we have all the training data already. there is no point. The tool is not the research.
-
-
-Mock data:
-
-Synthetic data: Work in 16 bit
-**Function that you input indices and it creates phase_i on those. Required for both void and fibers (must also check for N inner boundary values)
-**Create phase class that determines how sets of indices are coloured. This class holds edge structure, as well as greyscale gaussian 
-*Function that takes input image of binarized fiber and turns it into indices (for ^), 
-
-*Image maker class: this we feed in different phases, and has the functionality for creating the actual images etc
+Look at PDF of susan filtered TIF file, currently having issues doing this for 16 bit data. works for 8 bit however.
 
 Network:
-1. Get 2D network up and running for the synthetic data
+Get 2D UNET network working using tensorflow and VGG16 weights
+
+
 
 General fixes:
 * cleanup lol
@@ -23,5 +14,17 @@ General fixes:
 Questions:
 * Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis (I believe 3d 3d)
 
-NOTE: 
+NOTES: 
 * Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning
+
+
+
+
+Forget the section below, synthetic data is likely a waste of time
+Synthetic data: Work in 16 bit
+**Function that you input indices and it creates phase_i on those. Required for both void and fibers (must also check for N inner boundary values)
+**Create phase class that determines how sets of indices are coloured. This class holds edge structure, as well as greyscale gaussian 
+*Function that takes input image of binarized fiber and turns it into indices (for ^), 
+*Image maker class: this we feed in different phases, and has the functionality for creating the actual images etc
+
+

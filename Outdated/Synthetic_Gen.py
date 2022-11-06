@@ -1,3 +1,5 @@
+#Outdated, no point using this, waste of everyones time
+
 # Numpy dependency
 
 class SynthData:
