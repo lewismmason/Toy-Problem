@@ -1,10 +1,18 @@
 This document contains the things I need to do going forward with the project.
 
-Look at PDF of susan filtered TIF file, currently having issues doing this for 16 bit data. works for 8 bit however.
+TODO: 
+* Get 2D SUSAN to work for 16 bit (will give better results)
+* Get the 3D susan and test it for PDF and binarizations
+* GET training to work on GPU
+
+
+Could not get the TIF file PDF to be as segmented as I would like, still may require using a network. Giving that a shot
 
 Network:
-Get 2D UNET network working using tensorflow and VGG16 weights
-
+* Get 2D UNET network working using tensorflow and VGG16 weights
+* Get set of "bad" training data (current 8bit susan for ground truth)
+* Test with 3 phases, void, 4 coated, no coated
+* Get the 3D UNET working
 
 
 General fixes:
@@ -12,13 +20,10 @@ General fixes:
 * use skimage only not PIL (skimage better with TIFs)
 
 Questions:
-* Is toumas's network working in 3D, or is it analyzing 2D over a full set of images to make a "3D" analysis (I believe 3d 3d)
+* none 
 
 NOTES: 
 * Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning
-
-
-
 
 Forget the section below, synthetic data is likely a waste of time
 Synthetic data: Work in 16 bit

@@ -5,6 +5,6 @@
 
     "batch_size": 32,
     "validation_split":0.2,
-    "classes": ["circle","square","none","unknown"],
-    "num_epochs": 20
+    "classes": ["phase 1", "phase 2", "phase 3"],
+    "num_epochs": 100
 }

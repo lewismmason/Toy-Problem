@@ -5,11 +5,11 @@ ylims = [0, 4000];
 bits = 16;  % depth of pixel or voxsel data
 
 % Manually entered tif file paths to look at
-tif1 = 'C:/School/Masters/Project/Data/Anderson Data/01 Control slices 100-400 from Anderson Fe_A1 Fe 100 top v 0 bot vert stack stitch 2um_Stitch-1.tif';
-tif2 = 'C:/School/Masters/Project/Data/Anderson Data/02 100pct slices 1350-1650 from Anderson Fe_A1 Fe 100 top v 0 bot vert stack stitch 2um_Stitch-1.tif';
-tif3 = 'C:/School/Masters/Project/Data/Anderson Data/03 Anderson Fe_Fe 1pct and pt5pct sheets 2pt5um 4501_recon.tif';
-tif4 = 'C:/School/Masters/Project/Data/Anderson Data/04 Anderson Fe_Fibres A1 Fe 100 top v 0 bot vert stack stitch 2um_Stitch.tif';
-tif5 = 'C:/School/Masters/Project/Data/Anderson Data/05 Anderson Fe_JGD sheet mixed 100pct 0pct 2um 4501 360_man_recon.tif';
+tif1 = 'C:/School/Masters/Project/Data/Anderson Data/Data 01.tif';
+tif2 = 'C:/School/Masters/Project/Data/Anderson Data/Data 02.tif';
+tif3 = 'C:/School/Masters/Project/Data/Anderson Data/Data 03.tif';
+tif4 = 'C:/School/Masters/Project/Data/Anderson Data/Data 04.tif';
+tif5 = 'C:/School/Masters/Project/Data/Anderson Data/Data 05.tif';
 
 % Put the integer on the same value to plot on same graph
 show_tif_pdf_SUSAN(tif1, 1, xlims, ylims, 'no Iron')
@@ -65,19 +65,17 @@ function show_tif_pdf_SUSAN(tif, fig_num, xlims, ylims, title_text)
         img = changem(img, noise_mean);
         imwrite(img, "ref.pgm");
         imwrite(img, "tmp.pgm");
-        cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 10';
+        cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 10 -d 2';
         [status, cmdout] = system(cmd);
-        cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 15 -3';
+        cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 5 -d 2';
         [status, cmdout] = system(cmd);
-%         cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 2 -d 1';
-%         [status, cmdout] = system(cmd);
-%         cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 1 -d 1';
-%         [status, cmdout] = system(cmd);
+        cmd = 'start susan.exe tmp.pgm tmp.pgm -s -t 2 -d 2';
+        [status, cmdout] = system(cmd);
 
         img = imread("tmp.pgm");
         tot_counts = tot_counts + histcounts(img,linspace(0,res, res+1));
 
-%         img = img(:,:,1) < 50;
+%         img = img(:,:,1) < 46;
 %         imwrite(img, "tmp.png");
 
     end
