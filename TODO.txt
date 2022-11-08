@@ -3,29 +3,34 @@ This document contains the things I need to do going forward with the project.
 TODO: 
 * Get 2D SUSAN to work for 16 bit (will give better results)
 * Get the 3D susan and test it for PDF and binarizations
-* GET training to work on GPU
-
-
-Could not get the TIF file PDF to be as segmented as I would like, still may require using a network. Giving that a shot
+* GET training to work on GPU (installation issues)
+* Make a better validation data generator (fine tuning, removing artifacts, etc)
 
 Network:
 * Get 2D UNET network working using tensorflow and VGG16 weights
 * Get set of "bad" training data (current 8bit susan for ground truth)
 * Test with 3 phases, void, 4 coated, no coated
-* Get the 3D UNET working
 
+This is the proof of concept required for the group
+
+* Get the 3D UNET working
+* Get the 3D SUSAN working
+
+* Implement various validation methods to make training data more accurate
 
 General fixes:
 * cleanup lol
 * use skimage only not PIL (skimage better with TIFs)
 
 Questions:
-* none 
+* noneee
 
 NOTES: 
-* Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning
+* Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning, may have to consider this by normalizing the main mean to some value
+* 2D SUSAN does not separate the sample as well as I would like. Moving to 3D if possible to see if that improves results
+* For training data gen don't include void that is close to the fibers, in case binarization is incorrect (also don't need as many void)
 
-Forget the section below, synthetic data is likely a waste of time
+Forget the section below, synthetic data is likely a waste of time (it is xd)
 Synthetic data: Work in 16 bit
 **Function that you input indices and it creates phase_i on those. Required for both void and fibers (must also check for N inner boundary values)
 **Create phase class that determines how sets of indices are coloured. This class holds edge structure, as well as greyscale gaussian 
