@@ -1,13 +1,13 @@
 This document contains the things I need to do going forward with the project.
 
 TODO: 
-* Get 2D SUSAN to work for 16 bit (will give better results)
+* Get 2D SUSAN to work for 16 bit (will give better results), maybe not actually
 * Get the 3D susan and test it for PDF and binarizations
 * GET training to work on GPU (installation issues)
 * Make a better validation data generator (fine tuning, removing artifacts, etc)
 
 Network:
-* Get 2D UNET network working using tensorflow and VGG16 weights
+* Get 2D UNET network working using tensorflow and VGG16 weights?
 * Get set of "bad" training data (current 8bit susan for ground truth)
 * Test with 3 phases, void, 4 coated, no coated
 
@@ -22,13 +22,14 @@ General fixes:
 * cleanup lol
 * use skimage only not PIL (skimage better with TIFs)
 
-Questions:
-* noneee
+Questions
 
 NOTES: 
 * Depending on whether you are doing a full sheet or thin sheets, the noise gaussian shifts mean*** Just a warning, may have to consider this by normalizing the main mean to some value
 * 2D SUSAN does not separate the sample as well as I would like. Moving to 3D if possible to see if that improves results
-* For training data gen don't include void that is close to the fibers, in case binarization is incorrect (also don't need as many void)
+* For training data gen don't include void that is close to the fibers (10 voxels?), in case binarization is incorrect (also don't need as many void)
+* The purpose for this is that while we can't binerize the fibers correctly, we may be able to pick up some of the additional features close to it by not using all of the data around the fibers to train
+* 
 
 Forget the section below, synthetic data is likely a waste of time (it is xd)
 Synthetic data: Work in 16 bit
